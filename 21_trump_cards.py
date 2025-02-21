@@ -8,7 +8,6 @@ player_deck = []
 computer_deck = []
 
 
-
 def pick_cardsplayer(player_deck,onetwofor,cards1,cards2,cards3,cards4):
     deck1 = random.choice(onetwofor)
     if (deck1 == 1):
@@ -31,6 +30,17 @@ def pick_cardsplayer(player_deck,onetwofor,cards1,cards2,cards3,cards4):
     elif (deck2 == 4):
         player_deck.append(random.choice(cards4))
     return
+
+def new_card_player(onetwofor,player_deck,cards1,cards2,cards3,cards4):
+    deck1 = random.choice(onetwofor)
+    if (deck1 == 1):
+        player_deck.append(random.choice(cards1))
+    elif (deck1 == 2):
+        player_deck.append(random.choice(cards2))
+    elif (deck1 == 3):
+        player_deck.append(random.choice(cards3))
+    elif (deck1 == 4):
+        player_deck.append(random.choice(cards4))
 
 def pick_cardscomputer(computer_deck,onetwofor,cards1,cards2,cards3,cards4):
     deck1 = random.choice(onetwofor)
@@ -55,6 +65,19 @@ def pick_cardscomputer(computer_deck,onetwofor,cards1,cards2,cards3,cards4):
         computer_deck.append(random.choice(cards4))
     return
 
+def new_card_computer(onetwofor,cards1,cards2,cards3,cards4,computer_deck):
+    deck1 = random.choice(onetwofor)
+    if (deck1 == 1):
+        computer_deck.append(random.choice(cards1))
+    elif (deck1 == 2):
+        computer_deck.append(random.choice(cards2))
+    elif (deck1 == 3):
+        computer_deck.append(random.choice(cards3))
+    elif (deck1 == 4):
+        computer_deck.append(random.choice(cards4))
+
+
+
 play = input("do you want to play?")
 
 while play:
@@ -78,18 +101,9 @@ while play:
 
         if (player_deck_sum < 21):
             draw1 = input("do you want to draw?")
-
-        if (computer_deck_sum < 18):
-            deck1 = random.choice(onetwofor)
-        if (deck1 == 1):
-            computer_deck.append(random.choice(cards1))
-        elif (deck1 == 2):
-            computer_deck.append(random.choice(cards2))
-        elif (deck1 == 3):
-            computer_deck.append(random.choice(cards3))
-        elif (deck1 == 4):
-            computer_deck.append(random.choice(cards4))
-        
+            if (draw1 == True):
+                new_card_player(onetwofor,player_deck,cards1,cards2,cards3,cards4)
+                print(player_deck)
         if (computer_deck_sum == 21):
             print("the npc has 21 you lose!")
             break
@@ -97,19 +111,11 @@ while play:
         if (computer_deck_sum > 21):
             print("the npc is over 21 you win")
             break
+            
+        if (computer_deck_sum < 17):
+            new_card_computer(onetwofor,cards1,cards2,cards3,cards4,computer_deck)
 
-        if draw1 == True:
-            print("drawing")
-            deck1 = random.choice(onetwofor)
-            if (deck1 == 1):
-                player_deck.append(random.choice(cards1))
-            elif (deck1 == 2):
-                player_deck.append(random.choice(cards2))
-            elif (deck1 == 3):
-                player_deck.append(random.choice(cards3))
-            elif (deck1 == 4):
-                player_deck.append(random.choice(cards4))
-        print(player_deck(0-3))
+        print(player_deck)
         if (player_deck_sum == 21):
             print("you have 21 you win!")
             break
