@@ -92,17 +92,9 @@ if (play == 1):
             print("player 1 is over 21 they lose")
             break
 
-    #player 2 deck check 1        
+        #player 2 deck check 1        
     
-        if (computer_deck_sum == 21):
-            print("player 2 has 21 they win!")
-            break
-
-        if (computer_deck_sum > 21):
-            print("player 2 is over 21 they lose")
-            break
-        
-        #draw new card player 2
+        #draw new card player 2 
 
         if (player_deck_sum < 21):
             print("player 2")
@@ -121,6 +113,16 @@ if (play == 1):
         if (draw1 == 2) and (draw2 == 2):
             print("player 1 has", player_deck_sum)
             print("player 2 has", computer_deck_sum)
+
+        if (computer_deck_sum == 21):
+            print("player 2 has 21 they win!")
+            break
+
+        if (computer_deck_sum > 21):
+            print("player 2 is over 21 they lose")
+            break
+        
+        
 
             #winner decider code 
 
